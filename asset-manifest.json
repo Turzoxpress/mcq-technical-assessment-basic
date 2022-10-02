@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/mcq-technical-assessment-basic/static/css/main.3da73311.css",
+    "main.js": "/mcq-technical-assessment-basic/static/js/main.5dacc6cd.js",
+    "static/js/787.635aedaa.chunk.js": "/mcq-technical-assessment-basic/static/js/787.635aedaa.chunk.js",
+    "static/media/logo.svg": "/mcq-technical-assessment-basic/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
+    "index.html": "/mcq-technical-assessment-basic/index.html",
+    "static/media/icon-check.svg": "/mcq-technical-assessment-basic/static/media/icon-check.2a82d3ac834a0d077676.svg",
+    "main.3da73311.css.map": "/mcq-technical-assessment-basic/static/css/main.3da73311.css.map",
+    "main.5dacc6cd.js.map": "/mcq-technical-assessment-basic/static/js/main.5dacc6cd.js.map",
+    "787.635aedaa.chunk.js.map": "/mcq-technical-assessment-basic/static/js/787.635aedaa.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.3da73311.css",
+    "static/js/main.5dacc6cd.js"
+  ]
+}
