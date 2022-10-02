@@ -59,13 +59,16 @@ function App() {
   };
 
   const listItems = quizQuestions.map((item, index) => (
-    <Quiz
-      position={index}
-      name={index.toString()}
-      question={item.question}
-      answers={item.answers}
-      handleAnswerSelection={handleAnswerSelection}
-    />
+    <div>
+      <Quiz
+        position={index}
+        name={index.toString()}
+        question={item.question}
+        answers={item.answers}
+        handleAnswerSelection={handleAnswerSelection}
+      />
+      <br></br>
+    </div>
   ));
   return (
     <div>

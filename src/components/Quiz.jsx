@@ -26,7 +26,7 @@ export default function Quiz(props) {
   return (
     <div>
       <div>
-        <h1>{props.question}</h1>
+        <h3>{props.question}</h3>
       </div>
       <div id={main_name}>{answerItems}</div>
       <div id={correct_answer}></div>
