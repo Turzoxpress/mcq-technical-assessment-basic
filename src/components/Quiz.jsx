@@ -1,6 +1,13 @@
 import React, { useState } from "react";
 
 export default function Quiz(props) {
+  // console.log("Response from parent : " + JSON.stringify(props));
+  // return (
+  //   <div>
+  //     <span>{JSON.stringify(props)}</span>
+  //   </div>
+  // );
+
   let main_name = "radio_" + props.name;
   let correct_answer = "correct_" + props.name;
 

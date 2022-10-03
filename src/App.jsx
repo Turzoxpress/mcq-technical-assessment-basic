@@ -6,12 +6,13 @@ import data from "./api/data";
 
 import Quiz from "./components/Quiz";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { getModifiedValues } from "./utils/Utils";
 
 function App() {
   //--
   const [limit, setLimit] = useState(1);
   const [questionSet, setQuestionSet] = useState([]);
-  const [questionsToDisplay, setQuestionsToDisplay] = useState(quizQuestions);
+  const [questionsToDisplay, setQuestionsToDisplay] = useState(data);
 
   // const firstTime = () => {
   //   let tempArray = [];
@@ -24,42 +25,52 @@ function App() {
   // };
 
   useEffect(() => {
-    setQuestionSet((oldArray) => [...oldArray, []]);
-    let tempArray = [];
-    //tempArray = setQuestionSet;
-    for (let i = 0; i <= 3; i++) {
-      //console.log("i : " + i);
-      tempArray = questionSet;
-      let tempRandomValue = generateRandomNumberWithinQuestion(
-        quizQuestions.length
-      );
-      //tempArray = questionSet;
-      if (tempArray.includes(tempRandomValue)) {
-      } else {
-        tempArray.push(
-          generateRandomNumberWithinQuestion(quizQuestions.length)
-        );
-      }
-    }
+    // console.log("custom questions : " + getModifiedValues());
+    // setQuestionsToDisplay(getModifiedValues());
 
-    setQuestionSet((questionSet) => [...questionSet, tempArray]);
-
-    //console.log("Array : " + questionSet);
-    //------
-    let tempArray2 = [];
-    for (let j = 0; j < questionSet.length; j++) {
-      let tempValue = quizQuestions[questionSet[j]];
-      //console.log("tempValue: " + JSON.stringify(tempValue));
-      tempArray2.push(tempValue);
+    for (let i = 0; i < 20; i++) {
+      setQuestionsToDisplay((questionsToDisplay) => [
+        ...questionsToDisplay,
+        quizQuestions[generateRandomNumberWithinQuestion(quizQuestions.length)],
+      ]);
     }
-    //console.log("tempArray2: " + tempArray2);
-    setQuestionsToDisplay((questionsToDisplay) => [
-      ...questionsToDisplay,
-      tempArray2,
-    ]);
-    console.log("final Array: " + JSON.stringify(questionsToDisplay));
-    //console.log("questionsToDisplay: " + JSON.stringify(questionsToDisplay));
-  }, []); // 👈️ empty dependencies array
+  }, []);
+
+  // useEffect(() => {
+  //   setQuestionSet((oldArray) => [...oldArray, []]);
+  //   let tempArray = [];
+  //   //tempArray = setQuestionSet;
+  //   for (let i = 0; i <= 3; i++) {
+  //     //console.log("i : " + i);
+  //     tempArray = questionSet;
+  //     let tempRandomValue = generateRandomNumberWithinQuestion(
+  //       quizQuestions.length
+  //     );
+  //     //tempArray = questionSet;
+  //     if (tempArray.includes(tempRandomValue)) {
+  //     } else {
+  //       tempArray.push(
+  //         generateRandomNumberWithinQuestion(quizQuestions.length)
+  //       );
+  //     }
+  //   }
+
+  //   setQuestionSet((questionSet) => [...questionSet, tempArray]);
+
+  //   console.log("Array : " + questionSet);
+  //   //------
+  //   let tempArray2 = [];
+  //   for (let j = 0; j < questionSet.length - 1; j++) {
+  //     let tempValue = JSON.stringify(quizQuestions[questionSet[j]]);
+  //     //console.log("tempValue: " + JSON.stringify(tempValue));
+  //     tempArray2.push(tempValue);
+  //   }
+  //   console.log("tempArray2: " + tempArray2);
+  //   // setQuestionsToDisplay(tempArray2);
+  //   setQuestionsToDisplay([tempArray2]);
+  //   console.log("final Array: " + JSON.stringify(questionsToDisplay));
+  //   //console.log("questionsToDisplay: " + JSON.stringify(questionsToDisplay));
+  // }, []); // 👈️ empty dependencies array
 
   const generateRandomNumberWithinQuestion = (size) => {
     const value = Math.floor(Math.random() * size);
@@ -118,21 +129,34 @@ function App() {
     document.getElementById(correct_answer).innerHTML = tempBanner;
   };
 
-  const listItems = questionsToDisplay.map((item, index) => (
-    <div>
-      <Quiz
-        position={index}
-        name={index.toString()}
-        question={item.question}
-        answers={item.answers}
-        handleAnswerSelection={handleAnswerSelection}
-      />
-      <br></br>
-    </div>
-  ));
+  // const listItems = questionsToDisplay.map((item, index) => (
+  //   <div>
+  //     <Quiz
+  //       position={index}
+  //       name={index.toString()}
+  //       question={item.question}
+  //       answers={item.answers}
+  //       handleAnswerSelection={handleAnswerSelection}
+  //     />
+  //     <br></br>
+  //   </div>
+  // ));
 
   return (
     <div>
+      <div
+        style={{
+          width: "100%",
+          alignItems: "left",
+          textAlign: "left",
+          paddingLeft: "50px",
+          margin: "20px",
+        }}
+      >
+        <p>
+          <b>Questions generated automatically by AI</b>
+        </p>
+      </div>
       <div
         style={{
           width: "100%",
@@ -157,7 +181,7 @@ function App() {
             margin: "20px",
           }}
         >
-          Total Questions: <b>{quizQuestions.length}</b>
+          Total Questions: <b>{questionsToDisplay.length}</b>
         </p>
         <p
           style={{
@@ -190,6 +214,7 @@ function App() {
           <b>{wrongAnswer}</b>
         </p>
       </div>
+      {/* <span>{JSON.stringify(questionsToDisplay)}</span> */}
       <div
         style={{
           display: "block",
@@ -198,7 +223,20 @@ function App() {
           marginLeft: "20%",
         }}
       >
-        {listItems}
+        {/* {questionSet} */}
+        {questionsToDisplay.map((item, index) => (
+          <div>
+            {/* {console.log("QuestionNew : " + item.question)} */}
+            <Quiz
+              position={index}
+              name={index.toString()}
+              question={item.question}
+              answers={item.answers}
+              handleAnswerSelection={handleAnswerSelection}
+            />
+            <br></br>
+          </div>
+        ))}
       </div>
     </div>
   );
