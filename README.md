@@ -6,6 +6,8 @@ This template is for you!
 
 ![screenshots](screenshots/s0.png)
 
+-------
+
 ![screenshots](screenshots/s1.png)
 
 ## Features
