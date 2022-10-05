@@ -4,6 +4,8 @@ Do you want to create a serverless online/offline technical assesment website fo
 
 This template is for you!
 
+![screenshots](screenshots/s0.png)
+
 ## Features
 
 - New questions for assesment from a predefined question set.
