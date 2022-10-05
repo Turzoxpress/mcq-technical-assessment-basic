@@ -23,7 +23,8 @@ export default function Quiz(props) {
             props.position,
             item.content,
             main_name,
-            correct_answer
+            correct_answer,
+            props.question
           )
         }
       />{" "}

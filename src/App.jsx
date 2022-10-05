@@ -90,7 +90,8 @@ function App() {
     position,
     selectedAnswer,
     main_name,
-    correct_answer
+    correct_answer,
+    question
   ) => {
     console.log(
       "Position : " +
@@ -103,10 +104,19 @@ function App() {
     );
     let temp = "";
 
-    for (let i = 0; i < quizQuestions[position].answers.length; i++) {
-      if (quizQuestions[position].answers[i].isCorrect) {
-        temp = quizQuestions[position].answers[i].content;
-        break;
+    for (let i = 0; i < quizQuestions.length; i++) {
+      // if (quizQuestions[position].answers[i].isCorrect) {
+      //   temp = quizQuestions[position].answers[i].content;
+      //   break;
+      // }
+
+      if (quizQuestions[i].question === question) {
+        for (let j = 0; j < quizQuestions[i].answers.length; j++) {
+          if (quizQuestions[i].answers[j].isCorrect) {
+            temp = quizQuestions[i].answers[j].content;
+            break;
+          }
+        }
       }
     }
     console.log("Correct Answer is : " + temp);
@@ -168,6 +178,10 @@ function App() {
         <p>
           Particiapnt ID : <b>{participant_id}</b>
         </p>
+        <br></br>
+        <i color="#d3d3d3">
+          Note: Participant ID will always change after refresh!
+        </i>
       </div>
       <div
         style={{
